@@ -1,0 +1,13 @@
+body{
+    background-color: plum;
+}
+
+li{
+    color: blue;
+}
+
+p{
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px 18px greenyellow;
+}
