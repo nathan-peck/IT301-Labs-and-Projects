@@ -20,6 +20,13 @@
             min-height: 100dvh;
             width: 100px;
             display: flex;
+            flex-direction: column;
+        }
+
+        .PanelItem{
+            font-size: 35px;
+            width: 100px;
+            height: 100px;
         }
 
         #PictureParent{
@@ -28,12 +35,14 @@
             flex-direction: row;
             flex-wrap: wrap;
             overflow-y: auto;
-            align-items: stretch;
-            gap: 1px;
+            align-items: flex-start;
+            gap: 5px;
         }
 
         .PictureChild{
+            height: 100px;
             flex-grow: 1;
+            object-fit: cover;
         }
 
 
@@ -41,7 +50,10 @@
 </head>
 <body>
     <div id="LeftPanel">
-
+        <p class="PanelItem">&#x1F4F7;</p>
+        <p class="PanelItem">&#x1F5C4;&#xfe0f;</p>
+        <p class="PanelItem">&#x2764;&#xfe0f;</p>
+        <p class="PanelItem">&#x1F5D1;&#xfe0f;</p>
     </div>
     <div id="PictureParent">
 
