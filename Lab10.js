@@ -31,6 +31,9 @@ do {
     
 } while (isInvalid);
 
-console.log(`Text: ${answer}`);
+let tip = answer * 0.1;
+
+console.log(`For a bill of $${answer}, the tip should be $${tip}.`);
+document.write(`For a bill of $${answer}, the tip should be $${tip}.`);
 
 
