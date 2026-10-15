@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab11 - Mouse Events </title>
+
+    <style>
+        #box{
+            background-color: blue;
+            color: aliceblue;
+            font-size: 1.5em;
+            padding: 3px;
+            text-align: center;
+            width: 200px;
+        }
+
+        #box:hover{
+            cursor: pointer;
+        }
+
+        #mouseMan{
+            height: 75vh;
+            width: 75vw;
+        }
+    </style>
+
+</head>
+<body>
+    <p id="box">
+        Click Me! 😊
+    </p>
+
+    <div id="mouseMan">
+
+    </div>
+
+    <script>
+
+        const box = document.getElementById("box");
+        const mouseMan = document.getElementById("mouseMan");
+
+        function mouseoverFunc(event){
+            box.style.backgroundColor = "yellow";
+            box.style.color = "black";
+            box.textContent = "Do not click! 😠";
+            console.log(event);
+        }
+
+        box.addEventListener("mouseover", mouseoverFunc);
+
+        function clickFunc(event){
+            box.style.backgroundColor = "red";
+            box.style.color = "aliceblue";
+            box.textContent = "Ouch! 🤕";
+            console.log(event);
+        }
+
+        box.addEventListener("click", clickFunc);
+
+        function mouseleaveFunc(event){
+            box.style.backgroundColor = "lightgreen";
+            box.style.color = "black";
+            box.textContent = "Phew! 😌";
+            console.log(event);
+        }
+
+        box.addEventListener("mouseleave", mouseleaveFunc);
+
+        function dblclickFunc(event){
+            box.style.backgroundColor = "pink";
+            box.style.color = "black";
+            box.textContent = "Double trouble! 🤩";
+            console.log(event);
+        }
+
+        box.addEventListener("dblclick", dblclickFunc);
+
+        function mousemoveFunc(event){
+            box.style.backgroundColor = "lightblue";
+            box.style.color = "black";
+            box.textContent = "I see you! 👀";
+            console.log(event);
+        }
+
+        mouseMan.addEventListener("mousemove", mousemoveFunc);
+
+    </script>
+
+</body>
+</html>
