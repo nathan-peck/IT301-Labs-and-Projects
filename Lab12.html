@@ -34,6 +34,9 @@
         <p>Your answer:</p>
         <p id="result4"></p>
 
+        <button id="button4">Refresh</button>
+        <p id="refresh"></p>
+
 
 
     </form>
@@ -42,25 +45,30 @@
     <script>
         const name = document.getElementById("name");
         const result1 = document.getElementById("result1");
-        document.getElementById("button1").addEventListener("click", function(){
+        document.getElementById("button1").addEventListener("click", function(Event){
+            event.preventDefault();
             result1.textContent = "Hello, " + String(name.value) + "!";
             console.log(typeof name.value);
         });
 
         const num1 = document.getElementById("num1");
         const result2 = document.getElementById("result2");
-        document.getElementById("button2").addEventListener("click", function(){
+        document.getElementById("button2").addEventListener("click", function(Event){
+            event.preventDefault();
             console.log(num1.value);
         })
 
         const num2 = document.getElementById("num2");
         const result3 = document.getElementById("result3");
-        document.getElementById("button3").addEventListener("click", function(){
+        document.getElementById("button3").addEventListener("click", function(Event){
+            event.preventDefault();
             console.log(num2.value);
         })
 
 
-        document.getElementById("select").addEventListener("click", function(){
+        document.getElementById("select").addEventListener("click", function(Event){
+            event.preventDefault();
+            
             const operation =document.querySelector("[name = operation]:checked")
             console.log(operation.value);
             if (operation.value == "addition"){
