@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 12 - Greeting and Calculator</title>
+</head>
+<body>
+    <form action="#">
+        <label for="name">What is your name?</label>
+        <input type="text" id="name">
+        <button id="button1">Submit</button>
+        <p id="result1"></p>
+
+        <label for="num1">Select a number.</label>
+        <input type="number" id="num1">
+        <button id="button2">Submit</button>
+        <p id="result2"></p>
+
+        <label for="num2">Select another number.</label>
+        <input type="number" id="num2">
+        <button id="button3">Submit</button>
+        <p id="result3"></p>
+
+
+
+        <p>Select your operation</p>
+        <input type="radio" name="operation" value="addition"> Addition <br>
+        <input type="radio" name="operation" value="subtraction"> Subtraction <br>
+        <input type="radio" name="operation" value="multiplication"> Multiplication <br>
+        <input type="radio" name="operation" value="division"> Division <br>
+        <button id="select">Select</button>
+
+        <p>Your answer:</p>
+        <p id="result4"></p>
+
+
+
+    </form>
+
+
+    <script>
+        const name = document.getElementById("name");
+        const result1 = document.getElementById("result1");
+        document.getElementById("button1").addEventListener("click", function(){
+            result1.textContent = "Hello, " + String(name.value) + "!";
+            console.log(typeof name.value);
+        });
+
+        const num1 = document.getElementById("num1");
+        const result2 = document.getElementById("result2");
+        document.getElementById("button2").addEventListener("click", function(){
+            console.log(num1.value);
+        })
+
+        const num2 = document.getElementById("num2");
+        const result3 = document.getElementById("result3");
+        document.getElementById("button3").addEventListener("click", function(){
+            console.log(num2.value);
+        })
+
+
+        document.getElementById("select").addEventListener("click", function(){
+            const operation =document.querySelector("[name = operation]:checked")
+            console.log(operation.value);
+            if (operation.value == "addition"){
+                result4.textContent = Number(num1.value) + " + " + Number(num2.value) + " = " + (Number(num1.value) + Number(num2.value));
+            }
+            else if (operation.value == "subtraction"){
+                result4.textContent = Number(num1.value) + " - " + Number(num2.value) + " = " + (Number(num1.value) - Number(num2.value));
+            }
+            else if (operation.value == "multiplication"){
+                result4.textContent = Number(num1.value) + " * " + Number(num2.value) + " = " + (Number(num1.value) * Number(num2.value));
+            }
+            else if (operation.value == "division"){
+                result4.textContent = Number(num1.value) + " / " + Number(num2.value) + " = " + (Number(num1.value) / Number(num2.value));
+            }
+        });
+
+        
+        
+    </script>
+
+</body>
+</html>
