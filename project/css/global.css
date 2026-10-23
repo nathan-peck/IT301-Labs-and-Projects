@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-image: url("../images/header-pic.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 30px 0;
+    text-align: center;
+}
+
+body{
+    background-color: #1c1c1c;
+    font-size: 16px;
+}
+
+footer{
+    background-color: black;
+    padding: 15px 0 15px 0;
+    margin-bottom: 25px;
+}
