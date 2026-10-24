@@ -75,10 +75,9 @@
 
         <section class="questions">
             <form action="#">
-                <label for="grade">Have you ever watched any of these?</label> <br>
-                <input type="radio" value="Yes" required> Yes <br>
-                <input type="radio" value="No" required> No <br>
-                <button id="button">Submit</button>
+                <label for="movieCount">How many of these have you watched?</label> <br>
+                <input type="number" id="movieCount" name="movieCount" min=0 max=5>  <br>
+                <button type="submit" id="button">Submit</button>
                 
             </form>
         </section>
