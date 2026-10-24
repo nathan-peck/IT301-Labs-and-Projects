@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Press+Start+2P&display=swap');
+
 *{
     margin: 0;
     box-sizing: border-box;
@@ -17,7 +19,8 @@ header {
 
 h1{
     color: white;
-    font-family: sans-serif;
+    font-family: "Black Ops One", system-ui;
+    font-size: 2.5rem;
     margin-bottom: 5px;
     -webkit-text-stroke: 1px black;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 50%);
@@ -32,6 +35,18 @@ nav > ul{
     gap: 10px;
     flex-wrap: wrap;
 }
+
+@media (max-width: 650px) {
+  nav > ul {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+}
+
+/*
+^Above conglomerates navigation bar into single lines for easier readability on smaller screens^
+*/
+
 
 header a{
     text-decoration: none;
@@ -54,7 +69,11 @@ body{
 }
 
 main{
-    flex: 1;
+    display: flex;
+    min-height: 80vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .intro{
@@ -64,21 +83,81 @@ main{
     padding: 20px 0 40px 0;
 }
 
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.questions form{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #2b2b2b;
+    border-radius: 15px;
+    padding: 10px;
+    width: 100px;
+    height: auto;
+    align-items: center;
+    gap: 3px;
+}
+
+
+article > ul{
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    list-style-type: none;
+    padding: 0;
+}
+
+.reference article{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #2b2b2b;
+    border-radius: 15px;
+    padding: 10px;
+    width: auto;
+    height: auto;
+    align-items: center;
+    gap: 30px;
+    margin: 10px;
+}
+
+article a{
+    text-decoration: none;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+article a:hover{
+    color: red;
+    cursor: url("../images/Boxing-Pointer.png"), auto;
+}
+
 h2{
     font-family: Arial, Helvetica, sans-serif;
     color: royalblue;
+    text-align: center;
 }
 
 h3{
     font-family: Arial, Helvetica, sans-serif;
     color: royalblue;
     font-size: 1.17em;
+    text-align: center;
 }
 
 footer{
     background-color: black;
     padding: 15px 0 15px 0;
-    margin-bottom: 25px;
+    margin: 25px 0px 25px 0px;
 }
 
 footer p{
@@ -89,6 +168,8 @@ footer p{
 }
 
 p {
+    font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
+    text-align: center;
 }
