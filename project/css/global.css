@@ -36,6 +36,18 @@ nav > ul{
     flex-wrap: wrap;
 }
 
+@media (max-width: 650px) {
+  nav > ul {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+}
+
+/*
+^Above conglomerates navigation bar into single lines for easier readability on smaller screens^
+*/
+
+
 header a{
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
@@ -79,7 +91,18 @@ main{
     justify-content: center;
 }
 
-
+.questions form{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #2b2b2b;
+    border-radius: 15px;
+    padding: 10px;
+    width: 100px;
+    height: auto;
+    align-items: center;
+    gap: 3px;
+}
 
 
 article > ul{
