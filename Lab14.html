@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 14 API</title>
+</head>
+<body>
+    <main>
+        
+    </main>
+    <script>
+        let prof = document.createElement("div");
+        let form = document.createElement("form");
+        let bttn = document.createElement("button");
+
+        form.action = "#";
+        bttn.type = "button";
+        bttn.textContent = "Generate Profile";
+
+        form.appendChild(bttn);
+        document.body.appendChild(form);
+
+        document.body.appendChild(prof);
+        
+
+        const getProf = async()=>{
+            let ProfAdd = await fetch("https://randomuser.me/api/");
+            ProfAdd = await ProfAdd.json();
+
+            const user = ProfAdd.results[0];
+
+            prof.innerHTML = "";
+
+            let nameText = document.createElement("p");
+            nameText.textContent = `${user.name.title} ${user.name.first} ${user.name.last}`;
+
+            let img = document.createElement("img");
+            img.src = user.picture.large;
+            img.alt = "Profile Thumbnail";
+
+            let emailText = document.createElement("p");
+            emailText.textContent = `${user.email}`;
+
+            let phoneText = document.createElement("p");
+            phoneText.textContent = `${user.phone}`;
+
+            prof.appendChild(nameText);
+            prof.appendChild(img);
+            prof.appendChild(emailText);
+            prof.appendChild(phoneText);
+        }
+
+        bttn.addEventListener("click", getProf);
+
+
+        prof.style.backgroundColor = "#f0f0f0";
+        prof.style.border = "1px solid #ccc";
+        prof.style.borderRadius = "8px";
+        prof.style.padding = "20px";
+        prof.style.marginTop = "15px";
+        prof.style.maxWidth = "300px";
+        prof.style.textAlign = "center";
+
+    </script>
+</body>
+</html>
