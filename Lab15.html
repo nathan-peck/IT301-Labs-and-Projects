@@ -78,6 +78,21 @@
     </form>
 
     <script>
+        const getPosts = async()=>{
+            let posts = await fetch("https://jsonplaceholder.typicode.com/posts");
+            posts = await posts.json();
+            console.table(posts);
+
+            for (const [value] of posts.entries()) {
+                console.log(`Key (Index): ${index}, Value: ${value}`);
+            } 
+            const art = document.createElement("article");
+            document.body.appendChild(art);
+            
+        }
+
+        getPosts();
+
 
     </script>
 
