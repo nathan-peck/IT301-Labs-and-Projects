@@ -75,19 +75,37 @@
 
         <button type="button" id="findBtn">Find</button>
 
-        <div id="postsContainer"></div>
-
     </form>
 
     <script>
+        let allPosts = [];
+
+        const container = document.createElement("div");
+        container.id = "postsContainer";
+
+        const form = document.querySelector("form");
+        form.appendChild(container);
+
+        const renderPost = (post) => {
+            const article = document.createElement("article");
+            article.innerHTML = `
+                <h2>${post.title}</h2>
+                <p><strong>User ID:</strong> ${post.userId} | <strong>Post ID:</strong> ${post.id}</p>
+                <p>${post.body}</p>
+                <hr>
+            `;
+            container.appendChild(article);
+        };
+
         const getPosts = async()=>{
             let posts = await fetch("https://jsonplaceholder.typicode.com/posts");
-            posts = await posts.json();
-            console.table(posts);
+            allPosts = await posts.json();
+            console.log(`--- All Posts ---`);
+            console.table(allPosts);
 
             const container = document.getElementById("postsContainer");
 
-            posts.forEach(post => {
+            allPosts.forEach(post => {
                 const article = document.createElement("article");
 
                 article.innerHTML = `
@@ -100,12 +118,92 @@
                 container.appendChild(article);
             })
 
+        }
 
+        const setupFilterButton = () => {
+            const filterBtn = document.getElementById("filterBtn");
+            const userSelect = document.getElementById("userID");
+
+            filterBtn.addEventListener("click", () => {
+                const selectedUserId = userSelect.value;
+
+                if (selectedUserId === "") {
+                    console.log("Please select a User ID first.");
+                    return;
+                }
+
+                const filteredPosts = allPosts.filter(post => post.userId === Number(selectedUserId));
+
+                
+                console.log(`--- Posts for User ID: ${selectedUserId} ---`);
+                console.table(filteredPosts);
+            });
+        }
+
+        const setupDisplayUserButton = () => {
+            const displayUserBtn = document.getElementById("displayUserBtn");
+            const displayUserInput = document.getElementById("displayUserID");
+
+            displayUserBtn.addEventListener("click", () => {
+                const enteredUserId = displayUserInput.value;
+
+                if (enteredUserId === "" || enteredUserId < 1 || enteredUserId > 10) {
+                    alert("Please enter a valid User ID between 1 and 10.");
+                    return;
+                }
+
+                document.querySelectorAll('article').forEach((article) => {
+                    article.remove();
+                });
+
+                const filteredPosts = allPosts.filter(post => post.userId === Number(enteredUserId));
+
+                filteredPosts.forEach(post => renderPost(post));
+            });
+        }
+
+        const setupFindPostButton = () => {
+            const findBtn = document.getElementById("findBtn");
+            const postInput = document.getElementById("postID");
+
+            findBtn.addEventListener("click", () => {
+                const enteredPostId = postInput.value;
+
+                if (enteredPostId === "") {
+                    alert("Please enter a Post ID first.");
+                    return;
+                }
+
+                document.querySelectorAll('article').forEach((article) => {
+                    article.remove();
+                });
+
+                const existingError = document.getElementById("searchError");
+                if (existingError) existingError.remove();
+
+                const matchedPost = allPosts.find(post => post.id === Number(enteredPostId));
+
+                if (matchedPost) {
+                    renderPost(matchedPost);
+                }
+
+                else {
+                    const errorMessage = document.createElement("article");
+                    errorMessage.id = "searchError";
+                    errorMessage.innerHTML = `
+                        <h2>Post Not Found</h2>
+                        <p>No post matching ID <strong>${enteredPostId}</strong> exists within our database system.</p>
+                        <hr>
+                    `;
+                    container.appendChild(errorMessage);
+                }
+            });
         }
 
         getPosts();
-
-
+        setupFilterButton();
+        setupDisplayUserButton();
+        setupFindPostButton();
     </script>
 
 
