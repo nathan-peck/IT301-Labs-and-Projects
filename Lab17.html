@@ -67,7 +67,30 @@
 
         }
 
-    });
+        });
+
+        get.addEventListener('click', async function(event) {
+
+            try {
+
+                const snapshot = await db.collection('students').get();
+
+                snapshot.forEach(doc => {
+
+                    console.log(`Name: ${doc.data().name}
+        Grade: ${doc.data().grade}
+        Pass: ${doc.data().pass}`);
+
+                });
+
+            } catch (error) {
+
+                console.error("Firebase error:", error);
+                alert("Could not retrieve your data.");
+
+            }
+
+        });
     </script>
 </body>
 </html>
