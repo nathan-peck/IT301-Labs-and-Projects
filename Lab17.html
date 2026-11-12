@@ -45,6 +45,29 @@
 
         const pushData = document.getElementById("push");
         const getData = document.getElementById("get");
+
+
+        push.addEventListener('click', async function(event) {
+
+        try {
+
+            const docRef = await db.collection('students').add({
+                name: nameInput.value,
+                grade: gradeInput.value,
+                pass: gradeInput.value > 50 ? 'pass' : 'fail'
+            });
+
+            alert('Your data saved successfully');
+
+        }
+        catch (error) {
+
+            console.error("Firebase error:", error);
+            alert("Could not save your data.");
+
+        }
+
+    });
     </script>
 </body>
 </html>
