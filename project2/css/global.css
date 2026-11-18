@@ -15,6 +15,13 @@ document.documentElement.setAttribute("data-theme", "parchment");
 */
 
 body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background-color: var(--bg-color);
     color: var(--text-color);
+}
+
+main {
+    flex: 1;
 }
