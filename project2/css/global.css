@@ -17,6 +17,11 @@ document.documentElement.setAttribute("data-theme", "parchment");
 .header-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+#theme-button {
+    height: 30px;
 }
 
 nav > ul{
@@ -27,6 +32,10 @@ nav > ul{
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
+}
+
+header a {
+    text-decoration: none;
 }
 
 body {
