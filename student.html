@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 17 Student Page</title>
+</head>
+
+<body>
+    <header>
+        <h1>
+            Welcome
+        </h1>
+        <p id="gradeText">
+            Loading...
+        </p>
+    </header>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCGmzu8N8x-IOsdE2TGybX8KYGFQhPCZmI",
+            authDomain: "lab-16-9ecde.firebaseapp.com",
+            projectId: "lab-16-9ecde",
+            storageBucket: "lab-16-9ecde.firebasestorage.app",
+            messagingSenderId: "987947731494",
+            appId: "1:987947731494:web:b63514a34851a1af4d34e7"
+        };
+
+        // Connect to Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Connect to Firestore
+        const db = firebase.firestore();
+
+        const gradeText = document.getElementById("gradeText");
+
+        auth.onAuthStateChanged(async function (user) {
+            if (user === null) {
+                window.location.href = "login.html";
+                return;
+            }
+            const snapshot = await db.collection("students")
+                .doc(user.uid).get();
+            gradeText.textContent = "Grade: " + snapshot.data().grade;
+        });
+    </script>
+</body>
+
+</html>

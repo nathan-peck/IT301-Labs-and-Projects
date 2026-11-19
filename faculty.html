@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 17</title>
+    <title>Lab 17 Faculty Page</title>
 </head>
+
 <body>
     <header>
         <h1>Student Database</h1>
@@ -47,29 +49,29 @@
         const getData = document.getElementById("get");
 
 
-        push.addEventListener('click', async function(event) {
+        push.addEventListener('click', async function (event) {
 
-        try {
+            try {
 
-            const docRef = await db.collection('students').add({
-                name: nameInput.value,
-                grade: gradeInput.value,
-                pass: gradeInput.value > 50 ? 'pass' : 'fail'
-            });
+                const docRef = await db.collection('students').add({
+                    name: nameInput.value,
+                    grade: gradeInput.value,
+                    pass: gradeInput.value > 50 ? 'pass' : 'fail'
+                });
 
-            alert('Your data saved successfully');
+                alert('Your data saved successfully');
 
-        }
-        catch (error) {
+            }
+            catch (error) {
 
-            console.error("Firebase error:", error);
-            alert("Could not save your data.");
+                console.error("Firebase error:", error);
+                alert("Could not save your data.");
 
-        }
+            }
 
         });
 
-        get.addEventListener('click', async function(event) {
+        get.addEventListener('click', async function (event) {
 
             try {
 
@@ -78,8 +80,8 @@
                 snapshot.forEach(doc => {
 
                     console.log(`Name: ${doc.data().name}
-        Grade: ${doc.data().grade}
-        Pass: ${doc.data().pass}`);
+                    Grade: ${doc.data().grade}
+                    Pass: ${doc.data().pass}`);
 
                 });
 
@@ -93,4 +95,5 @@
         });
     </script>
 </body>
+
 </html>
